@@ -2656,7 +2656,20 @@ ol.proj.addProjection(createEPSG4326Proj('EPSG:4326:LONLAT', 'enu'));
 
                 deferredResult.resolve([baseMapLayer]);
 
-            } else if (mapConfig.type == 'tms') {
+        } else if (mapConfig.type.toLowerCase() == 'stamen') {
+            urls = mapConfig['url'];
+
+            var baseMapLayer = new ol.layer.Tile(
+                {title: mapConfig['title'],
+                    type: isBaseLayer?'base':undefined, // necessary for ol3-layerswitcher
+                    source:new ol.source.Stamen({
+                      layer: 'terrain'
+                    })
+                });
+
+            callback (baseMapLayer);
+
+        } else if (mapConfig.type == 'tms') {
 
                 urls = mapConfig['url'];
                 if (!urls)
