@@ -18,6 +18,7 @@
  }
  .tooltip-inner {
      border: 2px solid white;
+     max-width: 500px !important;
  }
 
  .tooltip-inner>table {
