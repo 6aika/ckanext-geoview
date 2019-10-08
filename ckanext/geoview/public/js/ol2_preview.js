@@ -140,8 +140,16 @@
                 var parsedUrl = resource.url.split('#');
                 var url = proxyServiceUrl || parsedUrl[0];
 
-                var ftName = parsedUrl.length > 1 && parsedUrl[1];
-                OL_HELPERS.withFeatureTypesLayers(url, layerProcessor, ftName);
+                if ( ckan.geoview.map_layers && !ckan.geoview.show_other_layers ) {
+                    var map_layers = ckan.geoview.map_layers.split(" ");
+                    map_layers.forEach(function(feature) {
+                        OL_HELPERS.withFeatureTypesLayers(url, layerProcessor, feature);
+                    })
+                }
+                else {
+                    var ftName = parsedUrl.length > 1 && parsedUrl[1];
+                    OL_HELPERS.withFeatureTypesLayers(url, layerProcessor, ftName);
+                }
             },
             'wms' : function(resource, proxyUrl, proxyServiceUrl, layerProcessor) {
                 var parsedUrl = resource.url.split('#');
@@ -195,12 +203,9 @@
                 }
 
                 if ( ckan.geoview.map_layers ) {
-                  map_layers = ckan.geoview.map_layers.split(" ");
+                  var map_layers = ckan.geoview.map_layers.split(" ");
                   if ( map_layers && map_layers.includes(resourceLayer.name)) {
                     resourceLayer.visibility = true;
-                  }
-                  else if (ckan.geoview.hide_other_overlays ){
-                      return;
                   }
                 }
 
