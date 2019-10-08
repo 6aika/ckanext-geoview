@@ -194,6 +194,16 @@
                     resourceLayer.setVisibility(false);
                 }
 
+                if ( ckan.geoview.map_layers ) {
+                  map_layers = ckan.geoview.map_layers.split(" ");
+                  if ( map_layers && map_layers.includes(resourceLayer.name)) {
+                    resourceLayer.visibility = true;
+                  }
+                  else if (ckan.geoview.hide_other_overlays ){
+                      return;
+                  }
+                }
+
                 this.map.addLayer(resourceLayer)
 
                 var bbox = resourceLayer.getDataExtent && resourceLayer.getDataExtent()
