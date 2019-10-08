@@ -6,4 +6,4 @@
 
 {{ form.input('map_layers', label=_('Map Layers'), value=data.map_layers, error=errors.map_layers )}}
 
-{{ form.checkbox('hide_other_overlays', label=_('Hide non-selected overlays'), value=True, checked=data.hide_other_overlays, error=errors.hide_other_overlays) }}
+{{ form.checkbox('show_other_layers', label=_('Show non-selected overlays'), value=True, checked=data.show_other_layers, error=errors.show_other_layers) }}

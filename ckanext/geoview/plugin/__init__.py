@@ -91,7 +91,7 @@ class OLGeoView(GeoViewMixin, GeoViewBase):
                 "feature_hoveron": [ignore_empty, boolean_validator],
                 "feature_style": [ignore_empty],
                 'map_layers': [ignore_empty, unicode_safe],
-                'hide_other_overlays': [ignore_empty, boolean_validator]
+                'show_other_layers': [ignore_empty, boolean_validator]
             },
         }
 
