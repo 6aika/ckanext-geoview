@@ -3,3 +3,7 @@
 {{ form.checkbox('feature_hoveron', label=_('Display Feature Info on Hover'), value=True, checked=data.feature_hoveron, error=errors.feature_hoveron) }}
 
 {{ form.textarea('feature_style', label=_('Feature style descriptor'), value=data.feature_style, error=errors.feature_style) }}
+
+{{ form.input('map_layers', label=_('Map Layers'), value=data.map_layers, error=errors.map_layers )}}
+
+{{ form.checkbox('hide_other_overlays', label=_('Hide non-selected overlays'), value=True, checked=data.hide_other_overlays, error=errors.hide_other_overlays) }}

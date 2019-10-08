@@ -20,6 +20,7 @@ else:
 
 ignore_empty = toolkit.get_validator("ignore_empty")
 boolean_validator = toolkit.get_validator("boolean_validator")
+unicode_safe = toolkit.get_validator("unicode_safe")
 
 log = logging.getLogger(__name__)
 
@@ -89,6 +90,8 @@ class OLGeoView(GeoViewMixin, GeoViewBase):
             "schema": {
                 "feature_hoveron": [ignore_empty, boolean_validator],
                 "feature_style": [ignore_empty],
+                'map_layers': [ignore_empty, unicode_safe],
+                'hide_other_overlays': [ignore_empty, boolean_validator]
             },
         }
 
