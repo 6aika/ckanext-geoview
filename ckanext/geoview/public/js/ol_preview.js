@@ -116,6 +116,10 @@
                 if (this.options.resourceView)
                     $_.extend(ckan.geoview, JSON.parse(this.options.resourceView));
 
+                if ( ckan.geoview.map_layers && !ckan.geoview.show_other_layers ) {
+                    service_resource_name = ckan.geoview.map_layers.split(" ").join(",");
+                }
+
                 ckan.geoview.gapi_key = this.options.gapi_key;
 
                 var mapDiv = $("<div></div>").attr("id", "map").addClass("map")
