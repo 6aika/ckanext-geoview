@@ -158,8 +158,16 @@
 
                 var url = proxyServiceUrl || getMapUrl;
 
-                var layerName = parsedUrl.length > 1 && parsedUrl[1];
-                OL_HELPERS.withWMSLayers(url, getMapUrl, layerProcessor, layerName, true /* useTiling*/ );
+                if ( ckan.geoview.map_layers && !ckan.geoview.show_other_layers ) {
+                    var map_layers = ckan.geoview.map_layers.split(" ");
+                    map_layers.forEach(function (feature) {
+                        OL_HELPERS.withWMSLayers(url, getMapUrl, layerProcessor, feature, true /* useTiling*/);
+                    })
+                }
+                else {
+                    var layerName = parsedUrl.length > 1 && parsedUrl[1];
+                    OL_HELPERS.withWMSLayers(url, getMapUrl, layerProcessor, layerName, true /* useTiling*/ );
+                }
             },
             'esrigeojson': function (resource, proxyUrl, proxyServiceUrl, layerProcessor) {
                 var url = proxyUrl || resource.url;
