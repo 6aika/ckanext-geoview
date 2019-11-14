@@ -319,7 +319,7 @@
                                             title: candidate.title,
                                             strategies: [new OpenLayers.Strategy.BBOXWithMax({maxFeatures: MAX_FEATURES, ratio: 1})],
                                             projection: Mercator,
-                                            visibility: idx == 0,
+                                            visibility: false,
                                             protocol: new OpenLayers.Protocol.WFS({
                                                 headers: {"Content-Type": "application/xml; charset=UTF-8"}, // (failed) attempt at dealing with accentuated chars in some feature types
                                                 version: ver,
@@ -367,7 +367,7 @@
                             title: candidate.title,
                             baseLayer: false,
                             singleTile: !useTiling,
-                            visibility: idx == 0,
+                            visibility: false,
                             projection: Mercator, // force SRS to 3857 if using OSM baselayer
                             ratio: 1
                         }
