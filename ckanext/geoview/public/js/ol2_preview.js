@@ -402,7 +402,3 @@
         }
     });
 })();
-
-$(function(event){
-   console.log('iframe ready')
-});
