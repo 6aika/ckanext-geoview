@@ -141,7 +141,7 @@
                 var url = proxyServiceUrl || parsedUrl[0];
 
                 if ( ckan.geoview.map_layers && !ckan.geoview.show_other_layers ) {
-                    var map_layers = ckan.geoview.map_layers.split(" ");
+                    var map_layers = ckan.geoview.map_layers.trim().split(" ");
                     map_layers.forEach(function(feature) {
                         OL_HELPERS.withFeatureTypesLayers(url, layerProcessor, feature);
                     })
@@ -159,7 +159,7 @@
                 var url = proxyServiceUrl || getMapUrl;
 
                 if ( ckan.geoview.map_layers && !ckan.geoview.show_other_layers ) {
-                    var map_layers = ckan.geoview.map_layers.split(" ");
+                    var map_layers = ckan.geoview.map_layers.trim().split(" ");
                     map_layers.forEach(function (feature) {
                         OL_HELPERS.withWMSLayers(url, getMapUrl, layerProcessor, feature, true /* useTiling*/);
                     })
