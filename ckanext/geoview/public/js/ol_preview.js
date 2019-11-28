@@ -41,7 +41,7 @@
                 }
 
                 if ( ckan.geoview.map_layers ) {
-                    var map_layers = ckan.geoview.map_layers.split(" ");
+                    var map_layers = ckan.geoview.map_layers.trim().split(" ");
                     if ( map_layers && map_layers.includes(resourceLayer.name)) {
                         resourceLayer.visibility = true;
                     }
@@ -117,7 +117,7 @@
                     $_.extend(ckan.geoview, JSON.parse(this.options.resourceView));
 
                 if ( ckan.geoview.map_layers && !ckan.geoview.show_other_layers ) {
-                    service_resource_name = ckan.geoview.map_layers.split(" ").join(",");
+                    service_resource_name = ckan.geoview.map_layers.trim().split(" ").join(",");
                 }
 
                 ckan.geoview.gapi_key = this.options.gapi_key;
