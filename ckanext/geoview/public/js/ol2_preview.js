@@ -196,6 +196,14 @@
             initialize: function () {
                 jQuery.proxyAll(this, /_on/);
                 this.el.ready(this._onReady);
+                // Mouseover event to remove scrolling from parent window's document.
+                document.body.addEventListener('mouseover', function(event) {
+                    parent.window.document.body.style.overflow = 'hidden';
+                });
+                // Mouseover event to restore scrolling on parent window's document.
+                document.body.addEventListener('mouseleave', function() {
+                    parent.window.document.body.style.overflow = '';
+                });
             },
 
             addLayer: function (resourceLayer) {
