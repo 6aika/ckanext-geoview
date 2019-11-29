@@ -29,4 +29,12 @@ setup(
     wmts_view=ckanext.geoview.plugin:WMTSView
     wmts_preview=ckanext.geoview.plugin:WMTSPreview
     ''',
+    message_extractors={
+        'ckanext': [
+            ('**/vendor/**.js', 'ignore', None),
+            ('**.py', 'python', None),
+            ('**.js', 'javascript', None),
+            ('**/templates/**.html', 'ckan', None),
+        ],
+    }
 )

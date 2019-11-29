@@ -4,6 +4,7 @@ import os
 
 from logging import getLogger
 
+from ckan.lib.plugins import DefaultTranslation
 from pylons import config
 from ckan.common import json
 
@@ -60,7 +61,7 @@ def get_openlayers_viewer_config():
                  if k.startswith(namespace)])
 
 
-class GeoViewBase(p.SingletonPlugin):
+class GeoViewBase(p.SingletonPlugin, DefaultTranslation):
     '''This base class is for view extensions. '''
     if p.toolkit.check_ckan_version(min_version='2.3'):
         p.implements(p.IResourceView, inherit=True)
@@ -68,6 +69,7 @@ class GeoViewBase(p.SingletonPlugin):
         p.implements(p.IResourcePreview, inherit=True)
     p.implements(p.IConfigurer, inherit=True)
     p.implements(p.IConfigurable, inherit=True)
+    p.implements(p.ITranslation, inherit=True)
 
     proxy_enabled = False
     same_domain = False
