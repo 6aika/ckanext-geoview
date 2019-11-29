@@ -10,6 +10,7 @@ from ckan import plugins as p
 from ckan.common import json
 from ckan.lib.datapreview import on_same_domain
 from ckan.plugins import toolkit
+from ckan.lib.plugins import DefaultTranslation
 
 import ckanext.geoview.utils as utils
 
@@ -25,12 +26,13 @@ unicode_safe = toolkit.get_validator("unicode_safe")
 log = logging.getLogger(__name__)
 
 
-class GeoViewBase(p.SingletonPlugin):
+class GeoViewBase(p.SingletonPlugin, DefaultTranslation):
     """This base class is for view extensions. """
 
     p.implements(p.IResourceView, inherit=True)
     p.implements(p.IConfigurer, inherit=True)
     p.implements(p.IConfigurable, inherit=True)
+    p.implements(p.ITranslation, inherit=True)
 
     proxy_enabled = False
     same_domain = False
