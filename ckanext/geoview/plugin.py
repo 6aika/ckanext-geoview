@@ -81,6 +81,9 @@ class GeoViewBase(p.SingletonPlugin, DefaultTranslation):
 
         self.proxy_enabled = 'resource_proxy' in config.get('ckan.plugins', '')
 
+    def i18n_domain(self):
+        return 'ckanext-geoview'
+
 
 class OLGeoView(GeoViewBase):
 

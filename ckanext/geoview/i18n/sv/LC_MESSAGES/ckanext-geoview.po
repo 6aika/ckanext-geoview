@@ -1,0 +1,60 @@
+# Translations template for ckanext-geoview.
+# Copyright (C) 2019 ORGANIZATION
+# This file is distributed under the same license as the ckanext-geoview
+# project.
+# FIRST AUTHOR <EMAIL@ADDRESS>, 2019.
+# 
+#, fuzzy
+msgid ""
+msgstr ""
+"Project-Id-Version: ckanext-geoview 0.0.12\n"
+"Report-Msgid-Bugs-To: EMAIL@ADDRESS\n"
+"POT-Creation-Date: 2019-11-29 08:21+0000\n"
+"PO-Revision-Date: 2019-11-29 08:23+0000\n"
+"Language-Team: Swedish (https://www.transifex.com/6aika-dataportal/teams/68018/sv/)\n"
+"MIME-Version: 1.0\n"
+"Content-Type: text/plain; charset=UTF-8\n"
+"Content-Transfer-Encoding: 8bit\n"
+"Generated-By: Babel 2.3.4\n"
+"Language: sv\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
+
+#: ckanext/geoview/plugin.py:115
+msgid "Map viewer"
+msgstr ""
+
+#: ckanext/geoview/plugin.py:220
+msgid "GeoJSON"
+msgstr ""
+
+#: ckanext/geoview/plugin.py:293
+msgid "WMTS"
+msgstr ""
+
+#: ckanext/geoview/public/js/geojson_preview.js:14
+#, python-format
+msgid "An error occurred: %(text)s %(error)s"
+msgstr ""
+
+#: ckanext/geoview/templates/dataviewer/geojson.html:12
+#: ckanext/geoview/templates/dataviewer/openlayers2.html:19
+#: ckanext/geoview/templates/dataviewer/openlayers3.html:7
+#: ckanext/geoview/templates/dataviewer/wmts.html:8
+msgid "Loading..."
+msgstr ""
+
+#: ckanext/geoview/templates/dataviewer/openlayers_form.html:3
+msgid "Display Feature Info on Hover"
+msgstr ""
+
+#: ckanext/geoview/templates/dataviewer/openlayers_form.html:5
+msgid "Feature style descriptor"
+msgstr ""
+
+#: ckanext/geoview/templates/dataviewer/openlayers_form.html:7
+msgid "Map Layers"
+msgstr ""
+
+#: ckanext/geoview/templates/dataviewer/openlayers_form.html:9
+msgid "Show non-selected overlays"
+msgstr ""
