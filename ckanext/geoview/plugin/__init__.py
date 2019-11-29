@@ -54,6 +54,9 @@ class GeoViewBase(p.SingletonPlugin, DefaultTranslation):
             "ckan.plugins", ""
         )
 
+        def i18n_domain(self):
+            return 'ckanext-geoview'
+
 
 class OLGeoView(GeoViewMixin, GeoViewBase):
 
