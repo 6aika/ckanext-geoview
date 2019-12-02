@@ -49,7 +49,7 @@ msgstr "Ladataan..."
 
 #: ckanext/geoview/templates/dataviewer/openlayers_form.html:3
 msgid "Display Feature Info on Hover"
-msgstr "Näytä ominaisuustiedot"
+msgstr "Näytä aineiston ominaisuustiedot kohdevalikossa"
 
 #: ckanext/geoview/templates/dataviewer/openlayers_form.html:5
 msgid "Feature style descriptor"
@@ -57,7 +57,7 @@ msgstr "Räätälöidyt tyylimäärittelyt"
 
 #: ckanext/geoview/templates/dataviewer/openlayers_form.html:7
 msgid "Map Layers"
-msgstr "Valitut karttatasot"
+msgstr "Näytettävät karttatasot"
 
 #: ckanext/geoview/templates/dataviewer/openlayers_form.html:9
 msgid "Show non-selected overlays"
