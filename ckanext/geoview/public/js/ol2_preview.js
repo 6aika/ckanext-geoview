@@ -196,14 +196,25 @@
             initialize: function () {
                 jQuery.proxyAll(this, /_on/);
                 this.el.ready(this._onReady);
-                // Mouseover event to remove scrolling from parent window's document.
-                document.body.addEventListener('mouseover', function(event) {
-                    parent.window.document.body.style.overflow = 'hidden';
-                });
-                // Mouseover event to restore scrolling on parent window's document.
-                document.body.addEventListener('mouseleave', function() {
-                    parent.window.document.body.style.overflow = '';
-                });
+
+                // prevent scrolling of parent window
+                (function(w) {
+                    var s = {insideFrame: false};
+                    $(this.el).mouseenter(function () {
+                        s.insideFrame = true;
+                        s.scrollX = w.scrollX;
+                        s.scrollY = w.scrollY;
+                    }).mouseleave(function () {
+                        s.insideFrame = false;
+                    });
+
+                    $(document).scroll(function () {
+                        if (s.insideFrame) {
+                            w.scrollTo(s.scrollX, s.scrollY);
+                        }
+                    })
+                })(window);
+
             },
 
             addLayer: function (resourceLayer) {
@@ -410,3 +421,4 @@
         }
     });
 })();
+
