@@ -399,7 +399,6 @@
                 layerSwitcher.maximizeControl();
 
                 document.getElementById('OpenLayers_Map_6_OpenLayers_Container').addEventListener('mousewheel', function(e){
-                    console.log(e);
                     e.preventDefault();
                 }, {passive:false});
 
