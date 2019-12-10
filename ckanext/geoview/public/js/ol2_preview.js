@@ -196,25 +196,6 @@
             initialize: function () {
                 jQuery.proxyAll(this, /_on/);
                 this.el.ready(this._onReady);
-
-                // prevent scrolling of parent window
-                (function(w) {
-                    var s = {insideFrame: false};
-                    $(this.el).mouseenter(function () {
-                        s.insideFrame = true;
-                        s.scrollX = w.scrollX;
-                        s.scrollY = w.scrollY;
-                    }).mouseleave(function () {
-                        s.insideFrame = false;
-                    });
-
-                    $(document).scroll(function () {
-                        if (s.insideFrame) {
-                            w.scrollTo(s.scrollX, s.scrollY);
-                        }
-                    })
-                })(window);
-
             },
 
             addLayer: function (resourceLayer) {
@@ -416,6 +397,10 @@
 
                 // Expand layer switcher by default
                 layerSwitcher.maximizeControl();
+
+                document.body.addEventListener('wheel', function(e){
+                    e.preventDefault();
+                }, {passive:false});
 
             }
         }
