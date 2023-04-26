@@ -10,6 +10,7 @@ from ckan import plugins as p
 from ckan.common import json
 from ckan.lib.datapreview import on_same_domain
 from ckan.plugins import toolkit
+from ckan.lib.plugins import DefaultTranslation
 
 import ckanext.geoview.utils as utils
 
@@ -20,16 +21,18 @@ else:
 
 ignore_empty = toolkit.get_validator("ignore_empty")
 boolean_validator = toolkit.get_validator("boolean_validator")
+unicode_safe = toolkit.get_validator("unicode_safe")
 
 log = logging.getLogger(__name__)
 
 
-class GeoViewBase(p.SingletonPlugin):
+class GeoViewBase(p.SingletonPlugin, DefaultTranslation):
     """This base class is for view extensions. """
 
     p.implements(p.IResourceView, inherit=True)
     p.implements(p.IConfigurer, inherit=True)
     p.implements(p.IConfigurable, inherit=True)
+    p.implements(p.ITranslation, inherit=True)
 
     proxy_enabled = False
     same_domain = False
@@ -50,6 +53,9 @@ class GeoViewBase(p.SingletonPlugin):
         self.proxy_enabled = "resource_proxy" in toolkit.config.get(
             "ckan.plugins", ""
         )
+
+        def i18n_domain(self):
+            return 'ckanext-geoview'
 
 
 class OLGeoView(GeoViewMixin, GeoViewBase):
@@ -89,6 +95,8 @@ class OLGeoView(GeoViewMixin, GeoViewBase):
             "schema": {
                 "feature_hoveron": [ignore_empty, boolean_validator],
                 "feature_style": [ignore_empty],
+                'map_layers': [ignore_empty, unicode_safe],
+                'show_other_layers': [ignore_empty, boolean_validator]
             },
         }
 

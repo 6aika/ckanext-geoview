@@ -27,4 +27,12 @@ setup(
     wmts_view=ckanext.geoview.plugin:WMTSView
     shp_view=ckanext.geoview.plugin:SHPView
     ''',
+    message_extractors={
+        'ckanext': [
+            ('**/vendor/**.js', 'ignore', None),
+            ('**.py', 'python', None),
+            ('**.js', 'javascript', None),
+            ('**/templates/**.html', 'ckan', None),
+        ],
+    }
 )

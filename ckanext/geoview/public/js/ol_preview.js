@@ -40,6 +40,13 @@
                     resourceLayer.setVisibility(false);
                 }
 
+                if ( ckan.geoview.map_layers ) {
+                    var map_layers = ckan.geoview.map_layers.trim().split(" ");
+                    if ( map_layers && map_layers.includes(resourceLayer.name)) {
+                        resourceLayer.visibility = true;
+                    }
+                }
+
                 return this.map.addLayerWithExtent(resourceLayer)
             },
 
@@ -63,6 +70,7 @@
                 } else if (!mapConfig.type || mapConfig.type.toLowerCase() == 'osm') {
                     // default to Stamen base map
                     mapConfig.type = 'Stamen';
+                    mapConfig.layer = 'terrain'
                     mapConfig.url = 'https://stamen-tiles-{s}.a.ssl.fastly.net/terrain/{z}/{x}/{y}.png';
                     mapConfig.subdomains = mapConfig.subdomains || 'abcd';
                     mapConfig.attribution = mapConfig.attribution || 'Map tiles by <a href="http://stamen.com">Stamen Design</a> (<a href="http://creativecommons.org/licenses/by/3.0">CC BY 3.0</a>). Data by <a href="http://openstreetmap.org">OpenStreetMap</a> (<a href="http://creativecommons.org/licenses/by-sa/3.0">CC BY SA</a>)';
@@ -108,6 +116,10 @@
 
                 if (this.options.resourceView)
                     $_.extend(ckan.geoview, JSON.parse(this.options.resourceView));
+
+                if ( ckan.geoview.map_layers && !ckan.geoview.show_other_layers ) {
+                    service_resource_name = ckan.geoview.map_layers.trim().split(" ").join(",");
+                }
 
                 ckan.geoview.gapi_key = this.options.gapi_key;
 
