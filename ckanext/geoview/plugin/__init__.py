@@ -13,6 +13,7 @@ from ckan.plugins import toolkit
 from ckan.lib.plugins import DefaultTranslation
 
 import ckanext.geoview.utils as utils
+import ckanext.geoview
 
 if toolkit.check_ckan_version("2.9"):
     from ckanext.geoview.plugin.flask_plugin import GeoViewMixin
@@ -54,8 +55,15 @@ class GeoViewBase(p.SingletonPlugin, DefaultTranslation):
             "ckan.plugins", ""
         )
 
-        def i18n_domain(self):
-            return 'ckanext-geoview'
+    def i18n_domain(self):
+        return 'ckanext-geoview'
+
+    def i18n_directory(self):
+        u'''Change the directory of the .mo translation files'''
+        return os.path.join(
+            os.path.dirname(ckanext.geoview.__file__),
+            'i18n'
+        )
 
 
 class OLGeoView(GeoViewMixin, GeoViewBase):
