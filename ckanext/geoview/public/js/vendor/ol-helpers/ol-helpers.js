@@ -1566,7 +1566,8 @@ ol.proj.addProjection(createEPSG4326Proj('EPSG:4326:LONLAT', 'enu'));
                                                     style: OL_HELPERS.DEFAULT_STYLEMAP.default,
                                                     title: candidate.title,
                                                     source: ftSource,
-                                                    visible: idx == 0 || ftNames != undefined, // if explicit ft list was passed, enable all
+                                                    //visible: idx == 0 || ftNames != undefined, // if explicit ft list was passed, enable all
+                                                    visible: false // Visibility is set elsewhere
                                                 });
                                                 // override getExtent to take advertised bbox into account first
                                                 ftLayer.getSource().set('name', candidate.name);
@@ -1799,7 +1800,8 @@ ol.proj.addProjection(createEPSG4326Proj('EPSG:4326:LONLAT', 'enu'));
                                 style: OL_HELPERS.DEFAULT_STYLEMAP.default,
                                 title: candidate.title,
                                 source: ftSource,
-                                visible: idx == 0 || ftNames != undefined
+                                //visible: idx == 0 || ftNames != undefined
+                                visible: false // Visibility is set elsewhere
                             });
                             // override getExtent to take advertised bbox into account first
                             ftLayer.getSource().set('name', candidate.name);
@@ -1877,7 +1879,8 @@ ol.proj.addProjection(createEPSG4326Proj('EPSG:4326:LONLAT', 'enu'));
                             if (useTiling) {
                                 mapLayer = new ol.layer.Tile({
                                     title: candidate.Title || candidate.Name,
-                                    visible: isFirst || layerNames != undefined, // if explicit layer list was passed, enable all
+                                    //visible: isFirst || layerNames != undefined, // if explicit layer list was passed, enable all
+                                    visible: false || layerNames != undefined, // Visibility is set elsewhere
                                     //extent: ,
                                     source: new ol.source.TileWMS({
                                         url: getMapUrl,
@@ -1890,7 +1893,8 @@ ol.proj.addProjection(createEPSG4326Proj('EPSG:4326:LONLAT', 'enu'));
                             } else {
                                 mapLayer = new ol.layer.Image({
                                     title: candidate.Name,
-                                    visible: isFirst || layerNames!= undefined, // if explicit layer list was passed, enable all,
+                                    //visible: isFirst || layerNames!= undefined, // if explicit layer list was passed, enable all,
+                                    visible: false || layerNames!= undefined, // Visibility is set elsewhere
                                     //extent: ,
                                     source: new ol.source.ImageWMS({
                                         url: getMapUrl,
@@ -2001,7 +2005,8 @@ ol.proj.addProjection(createEPSG4326Proj('EPSG:4326:LONLAT', 'enu'));
 
                         var mapLayer = new ol.layer.Tile({
                             title: candidate['Title'],
-                            visible: idx == 0 || layerNames != undefined, // if explicit layer list was passed, enable all,
+                            //visible: idx == 0 || layerNames != undefined, // if explicit layer list was passed, enable all,
+                            visible: false, // Visibility is set elsewhere
                             source: new ol.source.WMTS(options)
                         })
 

@@ -37,13 +37,21 @@
 
                 if (this.options.ol_config.hide_overlays &&
                     this.options.ol_config.hide_overlays.toLowerCase() == "true") {
-                    resourceLayer.setVisibility(false);
+                    resourceLayer.setVisible(false);
                 }
 
                 if ( ckan.geoview.map_layers ) {
-                    var map_layers = ckan.geoview.map_layers.trim().split(" ");
-                    if ( map_layers && map_layers.includes(resourceLayer.name)) {
-                        resourceLayer.visibility = true;
+                    let map_layers = ckan.geoview.map_layers.trim().split(" ");
+                    // Remove prefix of layername if it exists
+                    map_layers = map_layers.map((layer) => {
+                            if (!layer)
+                                return layer;
+
+                            let idx = layer.indexOf(':');
+                            return idx < 0 ? layer : layer.substring(idx+1);
+                    } )
+                    if ( map_layers && map_layers.includes(resourceLayer.get('title'))) {
+                        resourceLayer.setVisible(true);
                     }
                 }
 
